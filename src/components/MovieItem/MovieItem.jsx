@@ -5,9 +5,16 @@ import { connect } from 'react-redux';
 class MovieItem extends Component {
   render() {
     return (
-      <div>
-        <p>Empty Page</p>
-      </div>
+      <tr>
+        <td>
+          <img alt={this.props.movie.title} src={this.props.movie.poster} />
+        </td>
+        <td>
+          <h2>{this.props.movie.title}</h2>
+          <br />
+          <p>{this.props.movie.description}</p>
+        </td>
+      </tr>
     );
   }
 }

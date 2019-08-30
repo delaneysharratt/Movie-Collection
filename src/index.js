@@ -32,7 +32,8 @@ function* fetchMovies() {
     let movie = yield axios.get('/api/movie');
     console.log('SAGA response:', movie);
     yield put({
-      type: 'SET_MOVIES'
+      type: 'SET_MOVIES',
+      payload: movie.data
     });
   } catch (err) {
     console.log('Err in GET:', err);
