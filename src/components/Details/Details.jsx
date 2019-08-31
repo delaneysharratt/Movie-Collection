@@ -4,7 +4,18 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class Details extends Component {
-    
+  componentDidMount() {
+    this.getDetails();
+  }
+
+  getDetails() {
+    let id = this.props.match.params;
+    this.props.dispatch({
+      type: 'FETCH_SELECTED',
+      payload: id
+    });
+  }
+
   //Return to Home Page on "Back To List" click
   returnHome = event => {
     this.props.dispatch({
@@ -13,9 +24,11 @@ class Details extends Component {
     });
     this.props.history.push('/');
   };
+
   ///Go to Edit Page on "Edit" click
   editMovie = event => {
-    this.props.history.push('/edit');
+    let id = this.props.currentMovie.id;
+    this.props.history.push(`/edit/${id}`);
   };
 
   render() {

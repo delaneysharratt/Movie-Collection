@@ -8,10 +8,22 @@ class Edit extends Component {
     currentMovie: {
       id: this.props.currentMovie.id,
       poster: this.props.currentMovie.poster,
-      title: '',
-      description: ''
+      title: this.props.currentMovie.title,
+      description: this.props.currentMovie.description
     }
   };
+
+  componentDidMount() {
+    this.getEditDetails();
+  }
+
+  getEditDetails() {
+    let id = this.props.match.params;
+    this.props.dispatch({
+      type: 'FETCH_SELECTED',
+      payload: id
+    });
+  }
 
   //Sets input text as new title for selected movie
   changeTitle = event => {
@@ -51,13 +63,15 @@ class Edit extends Component {
   };
 
   render() {
+    console.log('Local state:', this.state.currentMovie);
+    console.log('currentMovie reducer:', this.props.currentMovie);
     return (
       <div>
         <p>EDIT PAGE</p>
         <input
           onChange={this.changeTitle}
           type="text"
-          placeholder="Movie Title"
+          placeholder={this.state.currentMovie.title}
         />
         <br />
         <textarea
@@ -65,7 +79,7 @@ class Edit extends Component {
           col="100"
           name="description"
           onChange={this.changeDescription}
-          placeholder="Update Movie Description"
+          placeholder={this.state.currentMovie.description}
         />
         <br />
         <button onClick={this.cancelEdit}>Cancel</button>
