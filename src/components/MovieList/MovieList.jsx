@@ -22,6 +22,7 @@ class MovieList extends Component {
     let movieList = this.props.movies.map(movie => {
       return <MovieItem key={movie.id} movie={movie} />;
     });
+
     return (
       <div>
         <table>

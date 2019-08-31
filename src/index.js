@@ -22,6 +22,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 
 /** ---------- SAGA GENERATOR FUNCTIONS ---------- **/
 //watches for all incoming action types, sends matches to generators
+
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchMovies);
 }
