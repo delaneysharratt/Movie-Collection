@@ -3,14 +3,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Edit extends Component {
+  //Local state contains edits for updated movie
   state = {
     currentMovie: {
+      id: this.props.currentMovie.id,
+      poster: this.props.currentMovie.poster,
       title: '',
       description: ''
     }
   };
 
-  //sets text as new title for selected movie
+  //Sets input text as new title for selected movie
   changeTitle = event => {
     this.setState({
       currentMovie: {
@@ -20,7 +23,7 @@ class Edit extends Component {
     });
   };
 
-  //set text as new description for selected movie
+  //Set text as new description for selected movie
   changeDescription = event => {
     this.setState({
       currentMovie: {
@@ -30,15 +33,21 @@ class Edit extends Component {
     });
   };
 
-  //exits edit and returns to movie details
+  //Exits edit and returns to movie details
   cancelEdit = event => {
     console.log('Canceling edit...');
+    this.props.history.push('/details');
   };
 
-  //dispatches an action to redux
-  //with payload of updated movie object
+  //Dispatches an action to redux
+  //with payload of currentMovie from state
   updateMovie = event => {
     console.log('Updating movie...');
+    this.props.dispatch({
+      type: 'UPDATE_MOVIE',
+      payload: this.state.currentMovie
+    });
+    this.props.history.push('/details');
   };
 
   render() {
@@ -66,4 +75,8 @@ class Edit extends Component {
   }
 }
 
-export default connect()(Edit);
+const mapStateToProps = reduxStore => ({
+  currentMovie: reduxStore.selected
+});
+
+export default connect(mapStateToProps)(Edit);
