@@ -1,10 +1,16 @@
 //REACT IMPORTS
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class MovieItem extends Component {
   seeDetails = event => {
-    this.props.history.push('/details');
+    let id = this.props.movie.id;
+    this.props.dispatch({
+      type: 'FETCH_SELECTED',
+      payload: this.props.movie
+    });
+    this.props.history.push(`/details/${id}`);
   };
 
   render() {
@@ -27,4 +33,4 @@ class MovieItem extends Component {
   }
 }
 
-export default withRouter(MovieItem);
+export default withRouter(connect()(MovieItem));
