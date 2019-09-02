@@ -2,8 +2,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-//COMPONENT FOR MOVIE LIST ITEMS IN TABLE
+//COMPONENT FOR MOVIE LIST ITEMS IN GRID
 import MovieItem from '../MovieItem/MovieItem';
+
+//MATERIAL-UI IMPORTS
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 class MovieList extends Component {
   componentDidMount() {
@@ -20,15 +24,19 @@ class MovieList extends Component {
     //for every movie in our movieReducer [] in redux
     //create a movieItem to be rendered to table in dom
     let movieList = this.props.movies.map(movie => {
-      return <MovieItem key={movie.id} movie={movie} />;
+      return (
+        <Grid item xs={12} sm={6}>
+          <MovieItem key={movie.id} movie={movie} />
+        </Grid>
+      );
     });
 
     return (
-      <div>
-        <table>
-          <tbody>{movieList}</tbody>
-        </table>
-      </div>
+      <Container fixed>
+        <Grid container spacing={3}>
+        {movieList}
+      </Grid>
+      </Container>
     );
   }
 }
