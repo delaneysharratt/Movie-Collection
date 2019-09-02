@@ -33,8 +33,9 @@ class Details extends Component {
 
   render() {
     console.log(this.props.currentMovie);
+    //creates a list of the genres array (key) within currentMovie object
     let genreList = this.props.currentMovie.genres.map((genre, i) => (
-        <span key={i}>{genre} </span>
+      <span key={i}>{genre} </span>
     ));
 
     return (
