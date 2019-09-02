@@ -20,7 +20,12 @@ router.get('/', (req, res) => {
 //sends all movies from server-side db to app
 router.get('/:id', (req, res) => {
   let idToSelect = req.params.id;
-  const queryText = `SELECT * FROM "movies" WHERE "id" = $1;`;
+  const queryText = `
+    SELECT "movies".id, "title", "poster", array_agg("genres".name) as genres, "description" FROM "movies"
+    JOIN "movies_genres" ON "movies".id = "movies_genres".movie_id
+    JOIN "genres" on "genres".id = "movies_genres".genre_id
+    WHERE "movies".id = $1
+    GROUP BY "movies".id;`;
   pool
     .query(queryText, [idToSelect])
     .then(result => {

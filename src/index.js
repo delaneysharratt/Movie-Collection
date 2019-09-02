@@ -99,7 +99,7 @@ const genres = (state = [], action) => {
 };
 
 //Used to store selected movie data
-const selected = (state = {}, action) => {
+const selected = (state = {genres: []}, action) => {
   switch (action.type) {
     case 'SET_SELECTED':
       return action.payload;

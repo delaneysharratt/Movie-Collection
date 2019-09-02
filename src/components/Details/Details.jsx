@@ -33,6 +33,9 @@ class Details extends Component {
 
   render() {
     console.log(this.props.currentMovie);
+    let genreList = this.props.currentMovie.genres.map((genre, i) => (
+        <span key={i}>{genre} </span>
+    ));
 
     return (
       <div>
@@ -41,7 +44,7 @@ class Details extends Component {
           src={this.props.currentMovie.poster}
         />
         <h1>{this.props.currentMovie.title}</h1>
-        <h3>Genres:</h3>
+        <h3>Genres: {genreList}</h3>
         <p>{this.props.currentMovie.description}</p>
         <button onClick={this.returnHome}>Back To List</button>
         <button onClick={this.editMovie}>Edit</button>
