@@ -53,7 +53,7 @@ class MovieItem extends Component {
           </Grid>
           <Grid item xs={12} sm container>
             <Box textAlign="center" m={1}>
-              <Typography variant="h4">{this.props.movie.title}</Typography>
+              <Typography variant="h5">{this.props.movie.title}</Typography>
               <br />
               <p>{this.props.movie.description}</p>
             </Box>

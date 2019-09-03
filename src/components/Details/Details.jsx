@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+//MATERIAL-UI IMPORTS
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
 class Details extends Component {
   componentDidMount() {
     this.getDetails();
@@ -39,17 +45,25 @@ class Details extends Component {
     ));
 
     return (
-      <div>
-        <img
+      <Paper>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <img
           alt={this.props.currentMovie.id}
           src={this.props.currentMovie.poster}
         />
-        <h1>{this.props.currentMovie.title}</h1>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <h1>{this.props.currentMovie.title}</h1>
         <h3>Genres: {genreList}</h3>
         <p>{this.props.currentMovie.description}</p>
-        <button onClick={this.returnHome}>Back To List</button>
+          </Grid>
+          <Grid item xs={12}>
+            <button onClick={this.returnHome}>Back To List</button>
         <button onClick={this.editMovie}>Edit</button>
-      </div>
+          </Grid>
+        </Grid>
+      </Paper>
     );
   }
 }
