@@ -24,10 +24,6 @@ class Details extends Component {
 
   //Return to Home Page on "Back To List" click
   returnHome = event => {
-    this.props.dispatch({
-      type: 'SET_SELECTED',
-      payload: ''
-    });
     this.props.history.push('/');
   };
 
@@ -49,18 +45,18 @@ class Details extends Component {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <img
-          alt={this.props.currentMovie.id}
-          src={this.props.currentMovie.poster}
-        />
+              alt={this.props.currentMovie.id}
+              src={this.props.currentMovie.poster}
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <h1>{this.props.currentMovie.title}</h1>
-        <h3>Genres: {genreList}</h3>
-        <p>{this.props.currentMovie.description}</p>
+            <h3>Genres: {genreList}</h3>
+            <p>{this.props.currentMovie.description}</p>
           </Grid>
           <Grid item xs={12}>
             <button onClick={this.returnHome}>Back To List</button>
-        <button onClick={this.editMovie}>Edit</button>
+            <button onClick={this.editMovie}>Edit</button>
           </Grid>
         </Grid>
       </Paper>

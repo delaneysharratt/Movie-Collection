@@ -1,6 +1,7 @@
 //REACT IMPORTS
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class Edit extends Component {
   //Local state contains edits for updated movie
@@ -47,19 +48,21 @@ class Edit extends Component {
 
   //Exits edit and returns to movie details
   cancelEdit = event => {
-    console.log('Canceling edit...');
-    this.props.history.push('/details');
+    console.log('Canceling edit...', this.props.match.params.id);
+    let id = this.props.match.params.id;
+    this.props.history.push(`/details/${id}`);
   };
 
   //Dispatches an action to redux
   //with payload of currentMovie from state
   updateMovie = event => {
     console.log('Updating movie...');
+    let id = this.props.match.params.id;
     this.props.dispatch({
       type: 'UPDATE_MOVIE',
       payload: this.state.currentMovie
     });
-    this.props.history.push('/details');
+    this.props.history.push(`/details/${id}`);
   };
 
   render() {
@@ -93,4 +96,4 @@ const mapStateToProps = reduxStore => ({
   currentMovie: reduxStore.selected
 });
 
-export default connect(mapStateToProps)(Edit);
+export default withRouter(connect(mapStateToProps)(Edit));
