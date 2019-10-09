@@ -17,13 +17,26 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
-    maxWidth: 500
+    maxWidth: 500,
+    maxHeight: 500,
+    height: 500
+  },
+  movie: {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   img: {
     margin: 'auto',
     display: 'block',
     maxWidth: '100%',
     maxHeight: '100%'
+  },
+  description: {
+    maxHeight: 300,
+    height: 275,
+    overflow: 'scroll'
   }
 });
 
@@ -39,22 +52,26 @@ class MovieItem extends Component {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <img
-                alt={this.props.movie.title}
-                src={this.props.movie.poster}
-                onClick={this.seeDetails}
-                className="movie-poster"
-              />
+          <Grid container spacing={2} className={classes.movie}>
+            <Grid item xs={12} sm={6} textAlign="center">
+              <Box textAlign="center">
+                <img
+                  alt={this.props.movie.title}
+                  src={this.props.movie.poster}
+                  onClick={this.seeDetails}
+                  className="movie-poster"
+                />
+              </Box>
             </Grid>
-            <Grid item xs={12} sm container>
+
+            <Grid item xs={12} sm={6}>
               <Box textAlign="center" m={1}>
                 <Typography variant="h4" gutterBottom>
                   {this.props.movie.title}
                 </Typography>
               </Box>
-              <Box>
+
+              <Box m={2} className={classes.description}>
                 <Typography variant="body2">
                   {this.props.movie.description}
                 </Typography>

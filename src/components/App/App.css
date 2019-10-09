@@ -1,13 +1,16 @@
 .App {
+  position: absolute;
   background-color: #222;
-  padding: 5% 0;
   font-family: 'Roboto', sans-serif;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+}
+
+.display {
+  padding: 5%;
 }
 
 p {
   text-indent: 3em;
-}
-
-.movie-poster {
-  padding: 2em;
 }
