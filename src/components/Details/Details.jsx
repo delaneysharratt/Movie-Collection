@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 //MATERIAL-UI IMPORTS
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
@@ -44,37 +45,48 @@ class Details extends Component {
       <Paper>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <img
-              alt={this.props.currentMovie.id}
-              src={this.props.currentMovie.poster}
-            />
+            <Box textAlign="center">
+              <img
+                alt={this.props.currentMovie.id}
+                src={this.props.currentMovie.poster}
+                className="movie-poster"
+              />
+            </Box>
           </Grid>
+
           <Grid item xs={12} sm={6}>
-            <Typography variant="h2" gutterBottom>
-              {this.props.currentMovie.title}
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-              Genres: {genreList}
-            </Typography>
+            <Box textAlign="center">
+              <Typography variant="h2" gutterBottom>
+                {this.props.currentMovie.title}
+              </Typography>
+
+              <Typography variant="h5" gutterBottom>
+                Genres: {genreList}
+              </Typography>
+            </Box>
+
             <Typography variant="body1" gutterBottom>
               {this.props.currentMovie.description}
             </Typography>
           </Grid>
+
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.returnHome}
-            >
-              Back To List
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={this.editMovie}
-            >
-              Edit
-            </Button>
+            <Box textAlign="center">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.returnHome}
+              >
+                Back To List
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.editMovie}
+              >
+                Edit
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       </Paper>

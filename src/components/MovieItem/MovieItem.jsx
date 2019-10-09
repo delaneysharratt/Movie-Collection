@@ -19,10 +19,6 @@ const styles = theme => ({
     margin: 'auto',
     maxWidth: 500
   },
-  image: {
-    width: 128,
-    height: 128
-  },
   img: {
     margin: 'auto',
     display: 'block',
@@ -43,23 +39,29 @@ class MovieItem extends Component {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <img
-              alt={this.props.movie.title}
-              src={this.props.movie.poster}
-              onClick={this.seeDetails}
-            />
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <img
+                alt={this.props.movie.title}
+                src={this.props.movie.poster}
+                onClick={this.seeDetails}
+                className="movie-poster"
+              />
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Box textAlign="center" m={1}>
+                <Typography variant="h4" gutterBottom>
+                  {this.props.movie.title}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="body2">
+                  {this.props.movie.description}
+                </Typography>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm container>
-            <Box textAlign="center" m={1}>
-              <Typography variant="h5">{this.props.movie.title}</Typography>
-              <br />
-              <p>{this.props.movie.description}</p>
-            </Box>
-          </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
       </div>
     );
   }
