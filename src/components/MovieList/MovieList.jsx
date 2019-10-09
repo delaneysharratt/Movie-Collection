@@ -23,9 +23,9 @@ class MovieList extends Component {
   render() {
     //for every movie in our movieReducer [] in redux
     //create a movieItem to be rendered to table in dom
-    let movieList = this.props.movies.map(movie => {
+    let movieList = this.props.movies.map((movie, i) => {
       return (
-        <Grid item xs={12} sm={6}>
+        <Grid item key={i} xs={12} sm={6}>
           <MovieItem key={movie.id} movie={movie} />
         </Grid>
       );
@@ -34,8 +34,8 @@ class MovieList extends Component {
     return (
       <Container fixed>
         <Grid container spacing={3}>
-        {movieList}
-      </Grid>
+          {movieList}
+        </Grid>
       </Container>
     );
   }

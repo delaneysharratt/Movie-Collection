@@ -1,26 +1,16 @@
 .App {
-  text-align: center;
+  position: absolute;
   background-color: #222;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+}
+
+.display {
   padding: 5%;
 }
 
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+p {
+  text-indent: 3em;
 }
