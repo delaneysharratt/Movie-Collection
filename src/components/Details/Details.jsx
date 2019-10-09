@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 class Details extends Component {
   componentDidMount() {
@@ -50,13 +50,31 @@ class Details extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <h1>{this.props.currentMovie.title}</h1>
-            <h3>Genres: {genreList}</h3>
-            <p>{this.props.currentMovie.description}</p>
+            <Typography variant="h2" gutterBottom>
+              {this.props.currentMovie.title}
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              Genres: {genreList}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {this.props.currentMovie.description}
+            </Typography>
           </Grid>
           <Grid item xs={12}>
-            <button onClick={this.returnHome}>Back To List</button>
-            <button onClick={this.editMovie}>Edit</button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.returnHome}
+            >
+              Back To List
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.editMovie}
+            >
+              Edit
+            </Button>
           </Grid>
         </Grid>
       </Paper>
